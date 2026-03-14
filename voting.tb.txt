@@ -1,0 +1,59 @@
+`timescale 1ns/1ps
+
+module digital_voting_machine_tb;
+
+reg clk;
+reg rst;
+reg vote_a;
+reg vote_b;
+reg vote_c;
+
+wire [3:0] count_a;
+wire [3:0] count_b;
+wire [3:0] count_c;
+
+digital_voting_machine uut (
+    .clk(clk),
+    .rst(rst),
+    .vote_a(vote_a),
+    .vote_b(vote_b),
+    .vote_c(vote_c),
+    .count_a(count_a),
+    .count_b(count_b),
+    .count_c(count_c)
+);
+
+// Clock generation
+always #5 clk = ~clk;
+
+initial
+begin
+    clk = 0;
+    rst = 1;
+    vote_a = 0;
+    vote_b = 0;
+    vote_c = 0;
+
+    // Reset
+    #20 rst = 0;
+
+    // Vote for A
+    #10 vote_a = 1;
+    #10 vote_a = 0;
+
+    // Vote for B
+    #10 vote_b = 1;
+    #10 vote_b = 0;
+
+    // Vote for C
+    #10 vote_c = 1;
+    #10 vote_c = 0;
+
+    // Another vote for A
+    #10 vote_a = 1;
+    #10 vote_a = 0;
+
+    #100 $finish;
+end
+
+endmodule

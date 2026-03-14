@@ -1,0 +1,33 @@
+module digital_voting_machine(
+    input clk,
+    input rst,
+    input vote_a,
+    input vote_b,
+    input vote_c,
+    output reg [3:0] count_a,
+    output reg [3:0] count_b,
+    output reg [3:0] count_c
+);
+
+always @(posedge clk or posedge rst)
+begin
+    if (rst)
+    begin
+        count_a <= 4'b0000;
+        count_b <= 4'b0000;
+        count_c <= 4'b0000;
+    end
+    else
+    begin
+        if (vote_a)
+            count_a <= count_a + 1;
+
+        if (vote_b)
+            count_b <= count_b + 1;
+
+        if (vote_c)
+            count_c <= count_c + 1;
+    end
+end
+
+endmodule
