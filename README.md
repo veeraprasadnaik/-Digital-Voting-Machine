@@ -48,4 +48,4 @@ Symbol	Meaning
 
 👨‍💻 Author
 
-K. Veera Prasad Naik
+K. Veera Prasad naik
