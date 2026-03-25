@@ -1,4 +1,4 @@
- 🗳️ Digital Voting Machine (Verilog)
+  🗳️ Digital Voting Machine (Verilog)
 📌 Description
 
 This project implements a Digital Voting Machine (DVM) using Verilog HDL.
